@@ -1,4 +1,5 @@
 Mss::Application.routes.draw do
+  root :to => "top#index"
   resources :events_users
 
   resources :users
