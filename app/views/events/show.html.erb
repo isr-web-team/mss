@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Brief:</strong>
+  <%= @event.brief %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Num</th>
+      <th>user name</th>
+      <th>Attend flg</th>
+      <th>Comment</th>
+      <th>登録日時</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events_users.each do |events_user| %>
+      <tr>
+        <td><%= "num" %></td>
+        <td><%= events_user.user.name %></td>
+        <td><%= @attend[events_user.attend_flg] %></td>
+        <td><%= events_user.comment %></td>
+        <td><%= events_user.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+
+
+<%= link_to '出欠登録をする', new_event_events_user_path(@event) %>
+
+<br>
+<%= link_to 'Edit', edit_event_path(@event) %>
+<%= link_to 'Back', events_path %>

@@ -8,6 +8,7 @@
 capybara-*.html
 .rspec
 .rvmrc
+Gemfile.lock
 /.bundle
 /vendor/bundle
 /log/*

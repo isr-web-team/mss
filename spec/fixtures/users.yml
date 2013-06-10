@@ -1,0 +1,6 @@
+user_001:
+  id: 1
+  login_id: 12345
+  name: 'テスト太郎'
+  email: 'taro@taro.jp'
+  password: 'test'
