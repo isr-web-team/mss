@@ -10,9 +10,11 @@ gem 'sqlite3'
 # gem 'sass-rails', '~> 4.0.0.rc1'
 
 # Use bootstrap
-gem 'less-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
+group :assets do
+  gem 'less-rails'
+end
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

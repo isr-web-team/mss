@@ -1,8 +1,12 @@
 <article>
-  <header>
+  <section class="overview clearfix">
     <h1>「もういらない」、幹事の手間</h1>
-  </header>
-  <section>
+  </section>
+  <section class="action-area">
+    <%= link_to t('.new', :default => t("helpers.links.event_new")),
+                new_event_path, :class => 'btn btn-primary btn-large' %>
+  </section>
+  <section class="tmp-area">
     <p><%= link_to 'イベント一覧', events_path %></p>
     <p><%= link_to 'ユーザー一覧', users_path %></p>
   </section>

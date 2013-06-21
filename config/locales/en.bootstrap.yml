@@ -6,11 +6,13 @@ en:
     actions: "Actions"
     num: "Num"
     links:
+      root: "Mss"
       back: "Back"
       cancel: "Cancel"
       confirm: "Are you sure?"
       destroy: "Delete"
       new: "New"
+      event_new: "Create Event"
       edit: "Edit"
       top: "back TOP"
     titles:
