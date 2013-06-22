@@ -30,15 +30,31 @@ class EventsUsersController < ApplicationController
   # POST /events_users
   # POST /events_users.json
   def create
-    @events_user = EventsUser.new(events_user_params)
+    user = EventsUser.find_by(user_id: events_user_params[:user_id], event_id: events_user_params[:event_id])
 
     respond_to do |format|
-      if @events_user.save
-        format.html { redirect_to event_path(params[:event_id]), notice: 'Events user was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @event }
+      if user
+        format.html {
+          redirect_to new_event_events_user_path,
+                      alert: I18n.t("helpers.notices.already_registered")
+        }
+#        format.json { render action: 'new', status: :created }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @events_user.errors, status: :unprocessable_entity }
+
+        @events_user = EventsUser.new(events_user_params)
+
+        if @events_user.save
+          format.html { redirect_to event_path(params[:event_id]),
+                                    notice: I18n.t("helpers.notices.success")
+          }
+#          format.json { render action: 'show', status: :created, location: @event }
+        else
+          format.html { 
+            redirect_to new_event_events_user_path,
+                        alert: I18n.t("helpers.notices.failed")
+          }
+#          format.json { render json: @events_user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

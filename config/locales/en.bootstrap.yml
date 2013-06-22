@@ -1,6 +1,5 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   helpers:
     actions: "Actions"
@@ -20,3 +19,7 @@ en:
       save: "Save"
       new: "New"
       delete: "Delete"
+    notices:
+      success: "successfully created."
+      already_registered: "already registerd."
+      failed: "failed."
