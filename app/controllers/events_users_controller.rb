@@ -1,6 +1,5 @@
 class EventsUsersController < ApplicationController
-  before_action :set_events_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_event_users_ids, only: [:new, :show, :edit, :update, :destroy]
 
   def attend
   end
@@ -20,7 +19,13 @@ class EventsUsersController < ApplicationController
   def new
     @events_user = EventsUser.new
     @event = Event.find(params[:event_id])
-    @users = User.all
+    if @event_users_ids.blank?
+      @users = User.all
+    else
+      @users = User.where(
+        "id NOT IN(?)", @event_users_ids
+      )
+    end
   end
 
   # GET /events_users/1/edit
@@ -85,9 +90,11 @@ class EventsUsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_events_user
-      @events_user = EventsUser.find(params[:id])
-      debugger
+    def set_event_users_ids
+      @event_users_ids = 
+        EventsUser.select(:user_id)
+                  .where(:event_id => params[:event_id])
+                  .uniq.pluck(:user_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
