@@ -3,8 +3,8 @@ Mss::Application.routes.draw do
 
   resources :users
 
-  resources :events do
-    resources :events_users, expect:[:show, :destroy]
+  resources :events, shallow: true do
+    resources :events_users, expect:[:index, :show]
   end
 
 

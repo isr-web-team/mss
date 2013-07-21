@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20130604032057) do
     t.datetime "updated_at"
   end
 
-  create_table "events_users", id: false, force: true do |t|
-    t.integer  "event_id"
-    t.integer  "user_id"
+  create_table "events_users", force: true do |t|
+    t.integer  "event_id",   null: false
+    t.integer  "user_id",    null: false
     t.integer  "attend_flg"
     t.string   "comment"
     t.datetime "created_at"
