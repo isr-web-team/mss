@@ -21,12 +21,12 @@
 
   <div class="field">
     <%= f.label :user %>
-    <%= f.collection_select :user_id, @users, :id, :name, {:include_blank => '選択してください'} %>
+    <%= f.collection_select :user_id, @users, :id %>
     <br><br>
   </div>
   <div class="field">
     <%= f.label :attend_flg %>
-    <%= f.select :attend_flg, [['出席', 1], ['欠席', 2], ['未定', 3]], {:include_blank => '選択してください'} %>
+    <%= f.select :attend_flg, [['出席', 1], ['欠席', 2], ['未定', 3]] %>
     <br><br>
   </div>
   <div class="field">
