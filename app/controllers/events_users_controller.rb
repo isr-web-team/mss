@@ -1,5 +1,5 @@
 class EventsUsersController < ApplicationController
-  before_action :set_event_users_ids, only: [:new, :show, :edit, :update, :destroy]
+  before_action :set_event_users_ids, :set_events_user, only: [:new, :show, :edit, :update, :destroy]
 
   def attend
   end
@@ -30,6 +30,8 @@ class EventsUsersController < ApplicationController
 
   # GET /events_users/1/edit
   def edit
+    @users = User.where(:id => @events_user.user_id)
+    @event = @events_user.event
   end
 
   # POST /events_users
@@ -104,7 +106,9 @@ class EventsUsersController < ApplicationController
       #params[:events_user][:event_id] = params[:event_id]
     end
 
-    def set_event
-      @event = Event.find(param[:id])
+    def set_events_user
+      if params[:id].present?
+        @events_user = EventsUser.find(params[:id])
+      end
     end
 end
