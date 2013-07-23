@@ -44,14 +44,20 @@ group :test do
   gem "rspec-rails"
 end
 
+group :development do
+  # エラー画面を分かり易く整形してくれる
+  gem 'better_errors'
+
+  # better_errorsの画面上にirb/pry(PERL)を表示する
+  gem 'binding_of_caller'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
 
 # Use debugger
  gem 'debugger', group: [:development, :test]
