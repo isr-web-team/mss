@@ -90,9 +90,10 @@ class EventsUsersController < ApplicationController
   # DELETE /events_users/1
   # DELETE /events_users/1.json
   def destroy
+    @event = @events_user.event
     @events_user.destroy
     respond_to do |format|
-      format.html { redirect_to events_users_url }
+      format.html { redirect_to @event, notice: 'Events user was successfully deleted.' }
       format.json { head :no_content }
     end
   end
