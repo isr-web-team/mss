@@ -26,12 +26,18 @@ class EventsUsersController < ApplicationController
         "id NOT IN(?)", @event_users_ids
       )
     end
+
+    # フォームのパス用
+    @path_event = @event
   end
 
   # GET /events_users/1/edit
   def edit
     @users = User.where(:id => @events_user.user_id)
     @event = @events_user.event
+
+    # edit時はフォームに指定する@eventはnilにする為、
+    # フォームのパス用@eventは設定しない
   end
 
   # POST /events_users
@@ -69,13 +75,14 @@ class EventsUsersController < ApplicationController
   # PATCH/PUT /events_users/1
   # PATCH/PUT /events_users/1.json
   def update
+    @event = @events_user.event
     respond_to do |format|
       if @events_user.update(events_user_params)
-        format.html { redirect_to @events_user, notice: 'Events user was successfully updated.' }
+        format.html { redirect_to @event, notice: 'Events user was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @events_user.errors, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
